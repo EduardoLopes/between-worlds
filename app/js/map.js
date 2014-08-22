@@ -4,6 +4,7 @@
 
   var w = 0, h = 0, i = 0;
 
+  //Each tile
   function MapNode(x,y,i) {
 
     this.type = randomChoice([0,1,2,3]);
@@ -16,7 +17,7 @@
 
   };
 
-
+  //Simple map class
   function Map()  {
 
     this.cols = 64;
@@ -95,7 +96,7 @@
 
   Map.prototype.addAdjacents = function(node, adjacent) {
 
-    if(typeof adjacent !== 'undefined'){
+    if(typeof adjacent !== undefined){
 
       node.adjacents.push(adjacent);
 

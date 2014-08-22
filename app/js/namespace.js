@@ -1,3 +1,5 @@
+/*Everything in Game is global*/
+
 var Game = {
   width: 640,
   height: 384,
@@ -8,6 +10,7 @@ var Game = {
   sprite: document.getElementById('sprite')
 };
 
+//Some helper functions
 function random( min, max ) {
   return Math.round(min + ( Math.random() * ( max - min ) ));
 }

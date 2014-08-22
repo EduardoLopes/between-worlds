@@ -3,6 +3,9 @@
   'use strict';
 
   //ludum dare
+  /*
+  * Everything in LD is private
+  */
   var LD = {};
 
   LD.init = function() {
