@@ -63,6 +63,9 @@ gulp.task('default', function(cb) {
     }))
     .pipe(gulp.dest('./dist'));
 
+   gulp.src('./app/img/*.{png,jpg}')
+   .pipe(gulp.dest('./dist/img'));
+
 });
 
 
