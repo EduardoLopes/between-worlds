@@ -1,0 +1,16 @@
+{
+  "name": "LD30-boilerplate",
+  "version": "0.0.0",
+  "description": "Ludum Dare 30 Base Code",
+  "author": "Eduardo Lopes",
+  "devDependencies": {
+    "del": "^0.1.2",
+    "event-stream": "^3.1.7",
+    "gulp": "^3.8.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-htmlbuild": "^0.2.1",
+    "gulp-livereload": "^2.1.1",
+    "gulp-uglify": "^0.3.1"
+  }
+}

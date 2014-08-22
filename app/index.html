@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ludum Dare 30</title>
+
+  <!-- htmlbuild:css -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- endbuild -->
+
+  <!-- htmlbuild:remove -->
+  <style>
+  /*This will be removed in the build*/
+  #canvas{
+    border: #181818 solid 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 640;
+    height: 384;
+  }
+  </style>
+  <!-- endbuild -->
+
+</head>
+<body>
+
+  <canvas id="canvas"></canvas>
+  <img id="sprite" src="img/sprite.png">
+
+  <!-- htmlbuild:js -->
+  <script src="js/vendor/rAF-polyfill.js"></script>
+  <script src="js/vendor/jsfxr.js"></script>
+  <script src="js/vendor/howler.min.js"></script>
+  <script src="js/namespace.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/game.js"></script>
+  <!-- endbuild -->
+
+  <!-- htmlbuild:remove -->
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  <!-- endbuild -->
+</body>
+</html>
