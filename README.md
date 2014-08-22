@@ -16,6 +16,7 @@ Gulp Tasks
 `gulp watch` run a live reload server
 
 Notes:
+------
 
 `namespace.js` is used to place some constants and helpers functions. The `Game` namespace is Global.
 
