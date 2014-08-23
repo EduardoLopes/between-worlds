@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="sprite" tilewidth="32" tileheight="32">
+  <image source="../img/sprite.png" width="320" height="320"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
+  <tile id="60" terrain=",,,0"/>
+  <tile id="61" terrain=",,0,0"/>
+  <tile id="62" terrain=",,0,"/>
+  <tile id="70" terrain=",0,,0"/>
+  <tile id="72" terrain="0,,0,"/>
+  <tile id="80" terrain=",0,,"/>
+  <tile id="81" terrain="0,0,,"/>
+  <tile id="82" terrain="0,,,"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxzYGBgEKMSdgRiXgbqAW4amOcFxExEYGYkfYw41HgDsQMDcWEjjmSeKA41wyH8YOGGK8zQw4+HAIa5H1eYoYcfseYR6196m0ds+oSFHwAGHgkn
+  </data>
+ </layer>
+</map>
