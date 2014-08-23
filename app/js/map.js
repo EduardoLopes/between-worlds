@@ -3,14 +3,15 @@
   'use strict';
 
   var w = 0, h = 0, i = 0;
+  var spriteCoords = {x: 0, y: 0};
 
   //Each tile
   function MapNode(x,y,i,t) {
 
     this.type = t;
     this.entity = [];
-    this.x = x;
-    this.y = y;
+    this.x = x * Game.tileSize;
+    this.y = y * Game.tileSize;
     this.i = i;
     this.adjacents = [];
     this.edges = [];
@@ -31,6 +32,7 @@
     };
     this.map = map;
     i = 0;
+
     for (h = 0; h < Game.sprite.height / Game.tileSize; h++) {
       for (w = 0; w < Game.sprite.width / Game.tileSize; w++) {
 
@@ -50,8 +52,7 @@
     for (h = 0; h < this.rows; h++) {
       for (w = 0; w < this.cols; w++) {
 
-        this.grid[this.cols * h + w] = new MapNode(w, h, this.cols * h + w, this.map[this.cols * h + w] - 1);
-
+        this.grid[this.cols * h + w] = new MapNode(w, h, this.cols * h + w, Math.max(0, this.map[this.cols * h + w] - 1));
 
       }
     }
@@ -71,23 +72,22 @@
         this.addAdjacents(this.grid[this.cols * h + w], this.grid[this.cols * (h) + (w + 1)]);
         this.addAdjacents(this.grid[this.cols * h + w], this.grid[this.cols * (h) + (w - 1)]);
 
-        //this will be useful for collision detection, didn't test yet, hope works ¯\_(ツ)_/¯
+        if(Game.solidTiles.indexOf(this.grid[this.cols * h + w].type) > -1){
+        //if(this.grid[this.cols * h + w].type !== 0){
 
-        if(Game.solidTiles.indexOf(this.grid[this.cols * h + w].type) !== -1){
-
-          if(this.grid[this.cols * (h + 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h+1) + w].type) !== -1){
+          if(this.grid[this.cols * (h + 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h+1) + w].type) === -1){
             this.grid[this.cols * h + w].edges.push('b');
           }
 
-          if(this.grid[this.cols * (h - 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h-1) + w].type) !== -1){
+          if(this.grid[this.cols * (h - 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h-1) + w].type) === -1){
             this.grid[this.cols * h + w].edges.push('t');
           }
 
-          if(this.grid[this.cols * (h) + (w + 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w + 1)].type) !== -1){
+          if(this.grid[this.cols * (h) + (w + 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w + 1)].type) === -1){
             this.grid[this.cols * h + w].edges.push('r');
           }
 
-          if(this.grid[this.cols * (h) + (w - 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w - 1)].type) !== -1){
+          if(this.grid[this.cols * (h) + (w - 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w - 1)].type) === -1){
             this.grid[this.cols * h + w].edges.push('l');
           }
         }
@@ -108,20 +108,20 @@
   };
 
   Map.prototype.drawTile = function(w, h, type) {
+    spriteCoords.y = Math.floor(type / 10);
+    spriteCoords.x = (type - spriteCoords.y * 10);
 
-    if(type > -1){
-      Game.ctx.drawImage(
-        Game.sprite,
-        this.spriteCoords[type][0] * Game.tileSize,
-        this.spriteCoords[type][1] * Game.tileSize,
-        Game.tileSize,
-        Game.tileSize,
-        (w * Game.tileSize),
-        (h * Game.tileSize),
-        Game.tileSize,
-        Game.tileSize
-      );
-    }
+    Game.ctx.drawImage(
+      Game.sprite,
+      spriteCoords.x * Game.tileSize,
+      spriteCoords.y * Game.tileSize,
+      Game.tileSize,
+      Game.tileSize,
+      (w * Game.tileSize),
+      (h * Game.tileSize),
+      Game.tileSize,
+      Game.tileSize
+    );
 
   };
 

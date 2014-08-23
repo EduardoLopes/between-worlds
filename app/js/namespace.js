@@ -4,10 +4,14 @@ var Game = {
   width: 640,
   height: 384,
   tileSize: 32,
-  solidTiles: [1],
+  solidTiles: [63,64,73,74,68,69,78,79],
   canvas: document.getElementById('canvas'),
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite')
+};
+
+for (var i = 1; i < 59; i++) {
+  Game.solidTiles.push(i);
 };
 
 //Some helper functions
