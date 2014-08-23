@@ -70,6 +70,7 @@
           this.vy = 0;
 
           if(Game.Key.up){
+            Game.jump.play();
             this.vy = this.jump;
           }
 
@@ -131,16 +132,19 @@
   if(this.y > Game.height){
     this.y = -this.size;
     this.next.y = this.y;
+    Game.fall.play();
   };
 
   if(this.x + this.size < 0){
     this.x = Game.width;
     this.next.x = this.x;
+    Game.fall.play();
   };
 
   if(this.x > Game.width){
     this.x = -this.size;
     this.next.x = this.x;
+    Game.fall.play();
   };
 
   };
