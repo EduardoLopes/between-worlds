@@ -124,6 +124,20 @@
   this.x = this.next.x;
   this.y = this.next.y;
 
+  if(this.y > Game.height){
+    this.y = -this.size;
+    this.next.y = this.y;
+  };
+
+  if(this.x + this.size < 0){
+    this.x = Game.width;
+    this.next.x = this.x;
+  };
+
+  if(this.x > Game.width){
+    this.x = -this.size;
+    this.next.x = this.x;
+  };
 
   };
 
