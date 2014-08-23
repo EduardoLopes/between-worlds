@@ -6,3 +6,7 @@ body{
 img{
   display: none;
 }
+
+#canvas{
+  border: solid 1px;
+}

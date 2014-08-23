@@ -9,7 +9,8 @@
       x: this.x,
       y: this.y
     };
-    this.speed = 3;
+    this.speed = 2;
+    this.maxSpeed = 20;
     this.vx = 0;
     this.vy = 0;
     this.size = 16;
@@ -29,7 +30,10 @@
   Player.prototype.update = function() {
     this.overlaping.length = 0;
 
-    this.vy += 1;
+    if(this.vy < this.maxSpeed){
+      this.vy += 1;
+    }
+
     this.vx *= 0.62;
 
     if(Game.Key.left){

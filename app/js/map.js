@@ -19,29 +19,20 @@
   };
 
   //Simple map class
-  function Map(map, color)  {
+  function Map(map, color, border, bg)  {
 
     this.cols = 20;
     this.rows = 12;
     this.grid = [];
-    this.spriteCoords = [];
     this.color = color;
+    this.border = border;
+    this.background = bg;
     this.viewport = {
       width: Game.width,
       height: Game.height
     };
     this.map = map;
     i = 0;
-
-    for (h = 0; h < Game.sprite.height / Game.tileSize; h++) {
-      for (w = 0; w < Game.sprite.width / Game.tileSize; w++) {
-
-        this.spriteCoords[i] = [w, h];
-        i++;
-
-      }
-    }
-
     this.generate();
 
   };
