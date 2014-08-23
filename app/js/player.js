@@ -13,6 +13,7 @@
     this.vx = 0;
     this.vy = 0;
     this.size = 16;
+    this.jump = -9;
     this.overlaping = [];
   };
 
@@ -31,8 +32,13 @@
     this.vy += 1;
     this.vx *= 0.62;
 
-    this.x = this.next.x;
-    this.y = this.next.y;
+    if(Game.Key.left){
+      this.vx += -this.speed;
+    }
+
+    if(Game.Key.right){
+      this.vx += this.speed;
+    }
 
     this.next.x += this.vx;
     this.next.y += this.vy;
@@ -58,6 +64,10 @@
 
           this.next.y = y;
           this.vy = 0;
+
+          if(Game.Key.up){
+            this.vy = this.jump;
+          }
 
         }
 
@@ -109,6 +119,10 @@
     }
 
   }
+
+
+  this.x = this.next.x;
+  this.y = this.next.y;
 
 
   };
