@@ -93,13 +93,13 @@
     LD.mapObjects[0] = new Game.Map(LD.maps[0], '#b45c71', '#891b35', '#ebb2bf', 0);
     LD.mapObjects[1] = new Game.Map(LD.maps[1], '#b46d5c', '#89301b', '#e0b8af', 1);
     LD.mapObjects[2] = new Game.Map(LD.maps[2], '#b4a35c', '#89731b', '#DCE0AF', 2);
-    LD.mapObjects[3] = new Game.Map(LD.maps[3], '#b4a35c', '#89731b', '#DCE0AF', 3);
-    LD.mapObjects[4] = new Game.Map(LD.maps[4], '#b4a35c', '#89731b', '#DCE0AF', 4);
-    LD.mapObjects[5] = new Game.Map(LD.maps[5], '#b4a35c', '#89731b', '#DCE0AF', 5);
+    LD.mapObjects[3] = new Game.Map(LD.maps[3], '#67b45c', '#1f5719', '#AFE0AF', 3);
+    LD.mapObjects[4] = new Game.Map(LD.maps[4], '#b45c71', '#891b35', '#ebb2bf', 4);
+    LD.mapObjects[5] = new Game.Map(LD.maps[5], '#b46d5c', '#89301b', '#e0b8af', 5);
     LD.mapObjects[6] = new Game.Map(LD.maps[6], '#b4a35c', '#89731b', '#DCE0AF', 6);
-    LD.mapObjects[7] = new Game.Map(LD.maps[7], '#b4a35c', '#89731b', '#DCE0AF', 7);
-    LD.mapObjects[8] = new Game.Map(LD.maps[8], '#b4a35c', '#89731b', '#DCE0AF', 8);
-    LD.mapObjects[9] = new Game.Map(LD.maps[9], '#b4a35c', '#89731b', '#DCE0AF', 9);
+    LD.mapObjects[7] = new Game.Map(LD.maps[7], '#67b45c', '#1f5719', '#AFE0AF', 7);
+    LD.mapObjects[8] = new Game.Map(LD.maps[8], '#b45c71', '#891b35', '#ebb2bf', 8);
+    LD.mapObjects[9] = new Game.Map(LD.maps[9], '#b46d5c', '#89301b', '#e0b8af', 9);
     LD.mapObjects[10] = new Game.Map(LD.maps[10], '#b4a35c', '#89731b', '#DCE0AF', 10);
 
     Game.currentMap = LD.mapObjects[0];
