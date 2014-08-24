@@ -3,7 +3,7 @@
   'use strict';
 
   function Player() {
-    this.x = 60;
+    this.x = 40;
     this.y = 140;
     this.next = {
       x: this.x,
@@ -130,7 +130,6 @@
 
   }
 
-
   this.x = this.next.x;
   this.y = this.next.y;
 
@@ -147,7 +146,7 @@
   };
 
   if(this.x > Game.width){
-    this.x = -this.size+6;
+    this.x = -this.size;
     this.next.x = this.x;
     Game.fall.play();
   };
