@@ -4,7 +4,7 @@ var Game = {
   width: 640,
   height: 384,
   tileSize: 32,
-  solidTiles: [63,64,73,74,68,69,78,79],
+  solidTiles: [63,64,73,74,68,69,78,79, 100, 101,102,103,104,105,110,111,112,113,114,115,120,121,122,123,124,125,130,131,132,133,134,135,140,141,142,143,144,145,150,151,152,153,154,155,163,164,173,174,],
   canvas: document.getElementById('canvas'),
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite')
@@ -55,4 +55,8 @@ function random( min, max ) {
 
 function randomChoice(array){
   return array[ random( 0, array.length - 1 ) ];
+}
+
+function distance(ax, ay, bx, by) {
+  return Math.sqrt(Math.pow( ax - bx, 2) + Math.pow( ay - by, 2));
 }

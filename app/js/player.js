@@ -121,6 +121,11 @@
 
         }
 
+    } else if(this.overlaping[i].type === 75){
+      if(distance(this.x + (this.size / 2), this.y + (this.size / 2), this.overlaping[i].x + (Game.tileSize / 2 ), this.overlaping[i].y + (Game.tileSize / 2))<=10){
+        this.overlaping[i].type = 76;
+        Game.setNextMap();
+      }
     }
 
   }

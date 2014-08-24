@@ -14,9 +14,12 @@
   <tile id="81" terrain="0,0,,"/>
   <tile id="82" terrain="0,,,"/>
  </tileset>
+ <tileset firstgid="101" name="sprite" tilewidth="32" tileheight="32">
+  <image source="../img/sprite.png" width="320" height="320"/>
+ </tileset>
  <layer name="Tile Layer 1" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJytkjEOgzAMRa0yFsa2Y0/RkaRMpWUCRrj/OepI/0uWCW0GLD0FR84j+spTRK4H0SmNHFdn+HowKa0SsEZ8s0/1wtwbfTBnku+jVOhH5a48lJOjwvnkmrH2bnZQauNMc6tykW02N9xpgWuF38528FlncJks+M9sHL/yq2XrZG7MZUIWdo/FvTbjo9PnNu5k6hkyPk8DXy7T3Psr8aUM+ab4Tkry2/Mxn4i7sg+GWOjzef7L7wtMsxsu
+   eJytkssKwjAQRYNd1i7VpV/hsqldVa2bpsv2/7/DGbgXhiHBIAYOeTBzEi65hxDOf2IUuvDbWDBPwhPrFr4HSEIvRMwD1tyzX+tW9Oj8hlN9L6FBj955FW7CwdHAR1eCz9bOwtE4tW4XTplsLnjDBtcOv60d4bPO6HLacM9qHKXRGp91MjdmmZCFPePgWZ/x0elzWwqZeuaMz9PBl8s09/9qfJoh/xT/Wk1+JR/zGfBW7qNhqPT5PL/l9wGPPxyQ
   </data>
  </layer>
 </map>
