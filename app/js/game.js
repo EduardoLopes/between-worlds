@@ -7,11 +7,14 @@
   * Everything in LD is private
   */
   var LD = {};
+  //switch music;
+  LD.music = false;
 
   document.addEventListener('keydown', function(e) {
     e.preventDefault();
 
-    if(e.keyCode === 88){
+    //X or SPACE or L
+    if(e.keyCode === 88 || e.keyCode === 32 || e.keyCode === 76){
       Game.changeMap.play();
       var current = Game.currentMap;
       Game.currentMap = Game.nextMap;
@@ -21,6 +24,16 @@
       Game.canvas.style.borderColor = Game.currentMap.border;
       Game.canvas.style.background = Game.currentMap.background;
 
+
+      if(LD.music){
+        Game.music1.unmute();
+        Game.music2.mute();
+      } else {
+        Game.music2.unmute();
+        Game.music1.mute();
+      }
+
+      LD.music = !LD.music;
     }
 
   });
@@ -48,6 +61,10 @@
     Game.canvas.style.background = Game.currentMap.background;
 
     LD.player = new Game.Player();
+
+    Game.music1.play();
+    Game.music2.play();
+    Game.music2.mute();
 
     LD.loop();
 
