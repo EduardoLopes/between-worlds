@@ -147,7 +147,7 @@
   };
 
   if(this.x > Game.width){
-    this.x = -this.size;
+    this.x = -this.size+6;
     this.next.x = this.x;
     Game.fall.play();
   };
