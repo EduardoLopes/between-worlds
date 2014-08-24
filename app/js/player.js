@@ -3,8 +3,8 @@
   'use strict';
 
   function Player() {
-    this.x = 32;
-    this.y = 32;
+    this.x = 60;
+    this.y = 140;
     this.next = {
       x: this.x,
       y: this.y
@@ -121,9 +121,9 @@
 
         }
 
-    } else if(this.overlaping[i].type === 75){
+    } else if(this.overlaping[i].type === 163){
       if(distance(this.x + (this.size / 2), this.y + (this.size / 2), this.overlaping[i].x + (Game.tileSize / 2 ), this.overlaping[i].y + (Game.tileSize / 2))<=10){
-        this.overlaping[i].type = 76;
+        this.overlaping[i].type = 164;
         Game.setNextMap();
       }
     }

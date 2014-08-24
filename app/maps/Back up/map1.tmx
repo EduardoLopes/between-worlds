@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="sprite" tilewidth="32" tileheight="32">
-  <image source="../img/sprite.png" width="320" height="320"/>
+  <image source="../img/sprite.png" width="320" height="640"/>
   <terraintypes>
    <terrain name="New Terrain" tile="-1"/>
   </terraintypes>
@@ -14,12 +14,12 @@
   <tile id="81" terrain="0,0,,"/>
   <tile id="82" terrain="0,,,"/>
  </tileset>
- <tileset firstgid="101" name="sprite" tilewidth="32" tileheight="32">
-  <image source="../img/sprite.png" width="320" height="320"/>
+ <tileset firstgid="201" name="sprite" tilewidth="32" tileheight="32">
+  <image source="../img/sprite.png" width="320" height="640"/>
  </tileset>
  <layer name="Tile Layer 1" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJytkssKwjAQRYNd1i7VpV/hsqldVa2bpsv2/7/DGbgXhiHBIAYOeTBzEi65hxDOf2IUuvDbWDBPwhPrFr4HSEIvRMwD1tyzX+tW9Oj8hlN9L6FBj955FW7CwdHAR1eCz9bOwtE4tW4XTplsLnjDBtcOv60d4bPO6HLacM9qHKXRGp91MjdmmZCFPePgWZ/x0elzWwqZeuaMz9PBl8s09/9qfJoh/xT/Wk1+JR/zGfBW7qNhqPT5PL/l9wGPPxyQ
+   eJytkkEOgjAQRRtZIkth6SlcK1s5JeAOWFKX9WhOkz/Jz2RETJzkpS2Zvkx/uIUQ6j/RClX4rSbhKSzOuYSvp/68H4XBoD0R9/M6Y//Amn13oaD+s3ARDoaCZlHnYno74UjOAc6Tk00jrDRXxJl7W/jYyW/XWmlNmO1F37VK8tk5NcOe7iXKbIaTs7Y+ddrc4odMLZ3js1ROTlv/317fhPdtlfdez5fg4v+Rc8sZX3f6bJ7f8nsD4q835Q==
   </data>
  </layer>
 </map>

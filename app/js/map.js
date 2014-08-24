@@ -19,7 +19,7 @@
   };
 
   //Simple map class
-  function Map(map, color, border, bg)  {
+  function Map(map, color, border, bg, index)  {
 
     this.cols = 20;
     this.rows = 12;
@@ -34,6 +34,7 @@
     this.map = map;
     i = 0;
     this.generate();
+    this.index = index;
 
   };
 
