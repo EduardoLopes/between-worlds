@@ -25,6 +25,13 @@
 
   Game.switchMap = function() {
     var current;
+    //console.log(LD.player.jumping);
+    if(Game.currentMap.index === 10){
+
+        Game.blocked.play();
+
+        return false;
+    }
 
     if(
       Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.y + (LD.player.size / 2)) / Game.tileSize) + Math.floor((LD.player.x + (LD.player.size / 2)) / Game.tileSize)].type) > -1 ||
@@ -35,7 +42,21 @@
         Game.blocked.play();
 
         return false;
-    };
+    } else {
+      if(LD.player.vy > 2){
+        console.log(LD.player.jumping);
+              if(
+        Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor(LD.player.next.x / Game.tileSize)].type) > -1 ||
+        Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor((LD.player.next.x + LD.player.size) / Game.tileSize)].type) > -1 ){
+
+          Game.blocked.play();
+
+          return false;
+        }
+      }
+    }
+
+
 
     current = Game.currentMap;
     Game.currentMap = Game.nextMap;
@@ -103,8 +124,8 @@
     LD.mapObjects[9] = new Game.Map(LD.maps[9], '#b46d5c', '#89301b', '#e0b8af', 9);
     LD.mapObjects[10] = new Game.Map(LD.maps[10], '#b4a35c', '#89731b', '#DCE0AF', 10);
 
-    Game.currentMap = LD.mapObjects[7];
-    Game.nextMap = LD.mapObjects[1];
+    Game.currentMap = LD.mapObjects[5];
+    Game.nextMap = LD.mapObjects[6];
 
     //document.body.style.background = Game.currentMap.color;
     Game.canvas.style.borderColor = Game.currentMap.border;
