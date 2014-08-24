@@ -14,8 +14,9 @@
     e.preventDefault();
 
     //X or SPACE or L
-    if(e.keyCode === 88 || e.keyCode === 32 || e.keyCode === 76){
+    if(Game.Key.sMap && !Game.Key.sMapPressed){
       Game.switchMap();
+      Game.Key.sMapPressed = true;
     }
 
   });
@@ -102,7 +103,7 @@
     LD.mapObjects[9] = new Game.Map(LD.maps[9], '#b46d5c', '#89301b', '#e0b8af', 9);
     LD.mapObjects[10] = new Game.Map(LD.maps[10], '#b4a35c', '#89731b', '#DCE0AF', 10);
 
-    Game.currentMap = LD.mapObjects[0];
+    Game.currentMap = LD.mapObjects[7];
     Game.nextMap = LD.mapObjects[1];
 
     //document.body.style.background = Game.currentMap.color;
@@ -130,8 +131,10 @@
     Game.currentMap.draw();
     LD.player.draw();
 
-    Game.ctx.globalAlpha = '0.1';
-    Game.nextMap.draw();
+    if(Game.currentMap.index != 10){
+      Game.ctx.globalAlpha = '0.1';
+      Game.nextMap.draw();
+    }
 
 
   };

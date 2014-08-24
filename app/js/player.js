@@ -3,7 +3,7 @@
   'use strict';
 
   function Player() {
-    this.x = 40;
+    this.x = 17 * 32;
     this.y = 140;
     this.next = {
       x: this.x,
@@ -134,8 +134,7 @@
   this.y = this.next.y;
 
   if(this.y > Game.height){
-    this.y = -this.size;
-    this.next.y = this.y;
+    this.next.y = 100;
     Game.fall.play();
   };
 
@@ -156,7 +155,10 @@
   Player.prototype.draw = function() {
 
     Game.ctx.fillRect(this.x, this.y, this.size, this.size);
-
+    Game.ctx.fillStyle = "rgba(24,24,24,0.6)";
+    for (var i = 0; i < this.overlaping.length; i++) {
+      Game.ctx.fillRect(this.overlaping[i].x, this.overlaping[i].y, 32, 32);
+    };
   };
 
   global.Game.Player = Player;
