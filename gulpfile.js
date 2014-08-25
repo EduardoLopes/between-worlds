@@ -66,6 +66,9 @@ gulp.task('default', function(cb) {
    gulp.src('./app/img/*.{png,jpg}')
    .pipe(gulp.dest('./dist/img'));
 
+   gulp.src('./app/music/*.{wav,ogg,mp3}')
+   .pipe(gulp.dest('./dist/music'));
+
 });
 
 

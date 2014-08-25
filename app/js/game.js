@@ -9,6 +9,7 @@
   var LD = {};
   //switch music;
   LD.music = false;
+  LD.muteMusic = false;
 
   document.addEventListener('keydown', function(e) {
     e.preventDefault();
@@ -18,6 +19,21 @@
       Game.switchMap();
       Game.Key.sMapPressed = true;
     }
+
+    if(Game.Key.m && !Game.Key.mPressed){
+      Game.Key.mPressed = true;
+
+      LD.muteMusic = !LD.muteMusic;
+
+      if(LD.muteMusic){
+        Game.music1.mute();
+        Game.music2.mute();
+      } else {
+        Game.music1.unmute();
+      }
+    }
+
+
 
   });
 
@@ -63,13 +79,14 @@
     Game.canvas.style.borderColor = Game.currentMap.border;
     Game.canvas.style.background = Game.currentMap.background;
     Game.changeMap.play();
-
-    if(LD.music){
-      Game.music1.unmute();
-      Game.music2.mute();
-    } else {
-      Game.music2.unmute();
-      Game.music1.mute();
+    if(!LD.muteMusic){
+      if(LD.music){
+        Game.music1.unmute();
+        Game.music2.mute();
+      } else {
+        Game.music2.unmute();
+        Game.music1.mute();
+      }
     }
 
     LD.music = !LD.music;
@@ -139,6 +156,9 @@
 
   LD.state['preload'] = function() {
 
+    Game.ctx.textAlign = 'center';
+    Game.ctx.font = "normal 60px Arial";
+    Game.ctx.fillText('BETWEEN WORLDS', (Game.width / 2), (Game.height / 2));
 
     Game.ctx.font = "normal 20px Arial";
     Game.ctx.fillText('Loading...', Game.width - 120, Game.height - 20);
@@ -149,7 +169,6 @@
       Game.music2.play();
       Game.music2.mute();
     }
-
 
   };
 
@@ -179,8 +198,6 @@
       Game.ctx.globalAlpha = '0.1';
       Game.nextMap.draw();
     }
-
-
 
 
   };
