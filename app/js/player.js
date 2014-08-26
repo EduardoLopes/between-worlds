@@ -43,13 +43,6 @@
     //   Game.fall.play();
     // };
 
-    if(this.y > Game.height){
-      this.next.y = -10;
-      this.y = -10;
-      Game.fall.play();
-    };
-
-
     if(this.vy < this.maxSpeed){
       this.vy += 1;
     }
@@ -59,14 +52,20 @@
     this.next.x += this.vx;
     this.next.y += this.vy;
 
-    if(Game.Key.left){
+    if(Game.Key.left && this.y + this.size >= 0){
       this.vx += -this.speed;
+      if(this.y > Game.height || this.y < 0) this.next.x = this.x + 2;
     }
 
-    if(Game.Key.right){
+    if(Game.Key.right && this.y + this.size >= 0){
       this.vx += this.speed;
+      if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
     }
 
+    if(this.y > Game.height){
+      this.next.y = -16;
+      Game.fall.play();
+    };
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y + this.size) / Game.tileSize) + Math.floor((this.next.x + this.size) / Game.tileSize)]);
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y) / Game.tileSize) + Math.floor((this.next.x) / Game.tileSize)]);
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y) / Game.tileSize) + Math.floor((this.next.x + this.size) / Game.tileSize)]);

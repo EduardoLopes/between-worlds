@@ -61,7 +61,7 @@ Game.music2 = new Howl({
   }
 });
 
-for (var i = 1; i < 150; i++) {
+for (var i = 1; i < 160; i++) {
   Game.solidTiles.push(i);
 };
 
