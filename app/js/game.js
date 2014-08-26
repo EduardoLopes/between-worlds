@@ -189,9 +189,9 @@
       Game.ctx.font = "normal 30px Arial";
       Game.ctx.fillText('The End', (Game.width / 2) + 100, (Game.height / 2) - 100);
       Game.ctx.font = "normal 15px Arial";
-      Game.ctx.fillText('Now are you stucked here and can\'t go anywhere!' , (Game.width / 2) + 100, ((Game.height / 2) + 20) - 100);
+      Game.ctx.fillText('Now you are stuck and cannot go anywhere!' , (Game.width / 2) + 100, ((Game.height / 2) + 20) - 100);
       Game.ctx.font = "normal 12px Arial";
-      Game.ctx.fillText('Something happened? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
+      Game.ctx.fillText('Did something happen? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
     }
 
     if(typeof Game.nextMap !== 'undefined'){
