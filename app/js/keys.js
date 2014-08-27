@@ -9,7 +9,8 @@
     sMap: false,
     sMapPressed: false,
     m: false,
-    mPressed: false
+    mPressed: false,
+    keydown: false
   };
 
   document.addEventListener('keydown', function(e) {
@@ -27,6 +28,8 @@
     if(e.keyCode === 88 || e.keyCode === 32 || e.keyCode === 76) key.sMap = true;
     //M
     if(e.keyCode === 77) key.m = true;
+
+    key.keydown = true;
 
   });
 
@@ -46,6 +49,8 @@
       key.mPressed = false
       key.m = false;
     };
+
+    key.keydown = false;
 
   });
 

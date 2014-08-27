@@ -9,8 +9,13 @@ var Game = {
   canvas: document.getElementById('canvas'),
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite'),
+  spritePlayer: document.getElementById('player'),
   end: false
 };
+
+Game.ctx.webkitImageSmoothingEnabled = false;
+Game.ctx.mozImageSmoothingEnabled = false;
+Game.ctx.imageSmoothingEnabled = false;
 
 Game.preload = {
   music1: false,

@@ -2,6 +2,11 @@
 
   'use strict';
 
+  var spriteCoords = {
+    x: 0,
+    y: 0
+  };
+
   function Player() {
     this.x = 60;
     this.y = 180;
@@ -17,6 +22,15 @@
     this.jump = -9;
     this.overlaping = [];
     this.jumping = true;
+    this.sprite = [];
+    this.sprite['walkingRight'] = [0,1,2,3,4,5,6,7];
+    this.sprite['walkingLeft'] = [0,1,2,3,4,5,6,7];
+    this.sprite['idleRight'] = [0,1,2,3,4,5,6,7];
+    this.sprite['idleLeft'] = [0,1,2,3,4,5,6,7];
+    this.spriteRow = ['walkingRight', 'walkingLeft', 'idleRight', 'idleLeft'];
+    this.frame = 0;
+    this.tick = 0;
+    this.currentAnimation = 'walkingRight';
   };
 
   Player.prototype.addOverlaping = function(node) {
@@ -57,11 +71,13 @@
 
     if(Game.Key.left && this.y + this.size >= 0){
       this.vx += -this.speed;
+      this.currentAnimation = 'walkingLeft';
       if(this.y > Game.height || this.y < 0) this.next.x = this.x + 2;
     }
 
     if(Game.Key.right && this.y + this.size >= 0){
       this.vx += this.speed;
+      this.currentAnimation = 'walkingRight';
       if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
     }
 
@@ -69,6 +85,7 @@
       this.next.y = -16;
       Game.fall.play();
     };
+
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y + this.size) / Game.tileSize) + Math.floor((this.next.x + this.size) / Game.tileSize)]);
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y) / Game.tileSize) + Math.floor((this.next.x) / Game.tileSize)]);
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y) / Game.tileSize) + Math.floor((this.next.x + this.size) / Game.tileSize)]);
@@ -166,11 +183,40 @@
     this.x = this.next.x;
     this.y = this.next.y;
 
+    if(!Game.Key.keydown){
+      if(this.currentAnimation == 'walkingLeft'){
+        this.currentAnimation = 'idleLeft';
+      }
+
+      if(this.currentAnimation == 'walkingRight'){
+        this.currentAnimation = 'idleRight';
+      }
+    }
+
   };
 
   Player.prototype.draw = function() {
 
-    Game.ctx.fillRect(this.x, this.y, this.size, this.size);
+    spriteCoords.y = this.spriteRow.indexOf(this.currentAnimation);
+    spriteCoords.x = this.sprite[this.currentAnimation][(this.frame % this.sprite[this.currentAnimation].length)];
+
+    Game.ctx.drawImage(
+      Game.spritePlayer,
+      spriteCoords.x * Game.tileSize,
+      spriteCoords.y * Game.tileSize,
+      Game.tileSize,
+      Game.tileSize,
+      Math.floor(this.x - 8),
+      Math.floor(this.y - 16),
+      Game.tileSize,
+      Game.tileSize
+    );
+
+    if(this.tick % 5 == 0){
+      this.frame++;
+    }
+
+    this.tick++;
 
   };
 
