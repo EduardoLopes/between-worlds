@@ -67,19 +67,20 @@
 
       this.next.x += this.vx;
       this.next.y += this.vy;
+      if(Game.Key.left && this.y + this.size >= 0){
+        this.vx += -this.speed;
+        this.currentAnimation = 'walkingLeft';
+        if(this.y > Game.height || this.y < 0) this.next.x = this.x + 2;
+      }
+
+      if(Game.Key.right && this.y + this.size >= 0){
+        this.vx += this.speed;
+        this.currentAnimation = 'walkingRight';
+        if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
+      }
     }
 
-    if(Game.Key.left && this.y + this.size >= 0){
-      this.vx += -this.speed;
-      this.currentAnimation = 'walkingLeft';
-      if(this.y > Game.height || this.y < 0) this.next.x = this.x + 2;
-    }
 
-    if(Game.Key.right && this.y + this.size >= 0){
-      this.vx += this.speed;
-      this.currentAnimation = 'walkingRight';
-      if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
-    }
 
     if(this.y > Game.height){
       this.next.y = -16;

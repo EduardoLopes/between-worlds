@@ -46,6 +46,7 @@
     if(Game.end){
 
       Game.blocked.play();
+      Game.mapAlpha = 0.6;
 
       return false;
     }
@@ -57,6 +58,7 @@
       ){
 
         Game.blocked.play();
+      Game.mapAlpha = 0.6;
 
         return false;
     } else {
@@ -66,6 +68,7 @@
         Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor((LD.player.next.x + LD.player.size) / Game.tileSize)].type) > -1 ){
 
           Game.blocked.play();
+      Game.mapAlpha = 0.6;
 
           return false;
         }
@@ -195,7 +198,7 @@
       Game.ctx.fillText('Did something happen? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
     }
 
-    Game.mapAlpha += (0.15 - Game.mapAlpha) * 0.15;
+    Game.mapAlpha += (0.14 - Game.mapAlpha) * 0.09;
     if(typeof Game.nextMap !== 'undefined'){
       Game.ctx.globalAlpha = Game.mapAlpha;
       Game.nextMap.draw();
@@ -203,7 +206,7 @@
 
     LD.whiteFlashALpha += (0 - LD.whiteFlashALpha) * 0.3;
     Game.ctx.globalAlpha = LD.whiteFlashALpha;
-    Game.ctx.fillStyle = 'rgba(255,255,255, 1)';
+    Game.ctx.fillStyle = 'rgba(205,205,205, 1)';
     Game.ctx.fillRect(0, 0, Game.width, Game.height);
 
   };
