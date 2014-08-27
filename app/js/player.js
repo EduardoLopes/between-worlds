@@ -43,14 +43,17 @@
     //   Game.fall.play();
     // };
 
-    if(this.vy < this.maxSpeed){
-      this.vy += 1;
+
+    if(Game.mapAlpha < 0.8){
+       if(this.vy < this.maxSpeed){
+        this.vy += 1;
+      }
+
+      this.vx *= 0.62;
+
+      this.next.x += this.vx;
+      this.next.y += this.vy;
     }
-
-    this.vx *= 0.62;
-
-    this.next.x += this.vx;
-    this.next.y += this.vy;
 
     if(Game.Key.left && this.y + this.size >= 0){
       this.vx += -this.speed;
@@ -159,7 +162,6 @@
       }
 
     }
-
 
     this.x = this.next.x;
     this.y = this.next.y;

@@ -10,6 +10,7 @@
   //switch music;
   LD.music = false;
   LD.muteMusic = false;
+  LD.whiteFlashALpha = 1;
 
   document.addEventListener('keydown', function(e) {
     e.preventDefault();
@@ -75,6 +76,9 @@
     Game.currentMap = Game.nextMap;
     Game.nextMap = current;
 
+    Game.mapAlpha = 1;
+    LD.whiteFlashALpha = 0.5;
+
     //document.body.style.background = Game.currentMap.color;
     Game.canvas.style.borderColor = Game.currentMap.border;
     Game.canvas.style.background = Game.currentMap.background;
@@ -102,7 +106,8 @@
       Game.canvas.style.background = Game.currentMap.background;
 
       Game.changeMap.play();
-
+      Game.mapAlpha = 1;
+      LD.whiteFlashALpha = 0.5;
 
   };
 
@@ -165,9 +170,9 @@
 
     if(Game.preload.music1 && Game.preload.music2){
       LD.currentState = 'play';
-      Game.music1.play();
-      Game.music2.play();
-      Game.music2.mute();
+      // Game.music1.play();
+      // Game.music2.play();
+      // Game.music2.mute();
     }
 
   };
@@ -175,11 +180,7 @@
   LD.state['play'] = function() {
 
     /* draw and update functions goes here */
-
     LD.player.update();
-
-
-
 
     Game.currentMap.draw();
     LD.player.draw();
@@ -194,11 +195,16 @@
       Game.ctx.fillText('Did something happen? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
     }
 
+    Game.mapAlpha += (0.15 - Game.mapAlpha) * 0.15;
     if(typeof Game.nextMap !== 'undefined'){
-      Game.ctx.globalAlpha = '0.1';
+      Game.ctx.globalAlpha = Game.mapAlpha;
       Game.nextMap.draw();
     }
 
+    LD.whiteFlashALpha += (0 - LD.whiteFlashALpha) * 0.3;
+    Game.ctx.globalAlpha = LD.whiteFlashALpha;
+    Game.ctx.fillStyle = 'rgba(255,255,255, 1)';
+    Game.ctx.fillRect(0, 0, Game.width, Game.height);
 
   };
 

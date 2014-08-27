@@ -5,6 +5,7 @@ var Game = {
   height: 384,
   tileSize: 32,
   solidTiles: [],
+  mapAlpha: 1,
   canvas: document.getElementById('canvas'),
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite'),
