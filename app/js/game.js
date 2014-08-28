@@ -108,7 +108,7 @@
       Game.canvas.style.borderColor = Game.currentMap.border;
       Game.canvas.style.background = Game.currentMap.background;
 
-      Game.changeMap.play();
+      Game.nextMapSound.play();
       Game.mapAlpha = 1;
       LD.whiteFlashALpha = 0.5;
 
@@ -173,9 +173,9 @@
 
     if(Game.preload.music1 && Game.preload.music2){
       LD.currentState = 'play';
-      // Game.music1.play();
-      // Game.music2.play();
-      // Game.music2.mute();
+      Game.music1.play();
+      Game.music2.play();
+      Game.music2.mute();
     }
 
   };

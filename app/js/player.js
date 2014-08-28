@@ -108,7 +108,6 @@
 
 
         if(Game.Collision.intercects(this.overlaping[i], this)){
-          this.jumping = false;
 
           if(this.overlaping[i].edges.indexOf('t') > -1 && Game.Collision.intecectsTop(this.overlaping[i], this)){
 
@@ -120,6 +119,7 @@
 
             this.next.y = y;
             this.vy = 0;
+            this.jumping = false;
 
             if(Game.Key.up){
               Game.jump.play();
@@ -214,6 +214,13 @@
     );
 
     if(this.tick % 5 == 0){
+
+      if(this.tick % 2 == 0 && !this.jumping && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
+        Game.walk1.play();
+      } else if(!this.jumping &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
+        Game.walk2.play();
+      }
+
       this.frame++;
     }
 
