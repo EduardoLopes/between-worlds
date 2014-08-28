@@ -58,6 +58,18 @@
     // };
 
 
+    if(!Game.Key.keydown){
+
+      if(this.currentAnimation == 'walkingLeft'){
+        this.currentAnimation = 'idleLeft';
+      }
+
+      if(this.currentAnimation == 'walkingRight'){
+        this.currentAnimation = 'idleRight';
+      }
+
+    }
+
     if(Game.mapAlpha < 0.8){
        if(this.vy < this.maxSpeed){
         this.vy += 1;
@@ -79,8 +91,6 @@
         if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
       }
     }
-
-
 
     if(this.y > Game.height){
       this.next.y = -16;
@@ -183,16 +193,6 @@
 
     this.x = this.next.x;
     this.y = this.next.y;
-
-    if(!Game.Key.keydown){
-      if(this.currentAnimation == 'walkingLeft'){
-        this.currentAnimation = 'idleLeft';
-      }
-
-      if(this.currentAnimation == 'walkingRight'){
-        this.currentAnimation = 'idleRight';
-      }
-    }
 
   };
 
