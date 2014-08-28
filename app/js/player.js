@@ -15,7 +15,7 @@
       y: this.y
     };
     this.speed = 2;
-    this.maxSpeed = 20;
+    this.maxSpeed = 15;
     this.vx = 0;
     this.vy = 0;
     this.size = 16;
@@ -58,19 +58,19 @@
     // };
 
 
-    if(!Game.Key.keydown){
-
-      if(this.currentAnimation == 'walkingLeft'){
-        this.currentAnimation = 'idleLeft';
-      }
-
-      if(this.currentAnimation == 'walkingRight'){
-        this.currentAnimation = 'idleRight';
-      }
-
-    }
 
     if(Game.mapAlpha < 0.8){
+      if(!Game.Key.keydown){
+
+        if(this.currentAnimation == 'walkingLeft'){
+          this.currentAnimation = 'idleLeft';
+        }
+
+        if(this.currentAnimation == 'walkingRight'){
+          this.currentAnimation = 'idleRight';
+        }
+
+      }
        if(this.vy < this.maxSpeed){
         this.vy += 1;
       }

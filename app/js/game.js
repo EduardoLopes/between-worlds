@@ -6,11 +6,23 @@
   /*
   * Everything in LD is private
   */
-  var LD = {};
+  var LD = {}, i = 0;
   //switch music;
   LD.music = false;
   LD.muteMusic = false;
   LD.whiteFlashALpha = 1;
+  //overlaping next map
+  LD.overlapingNM = [];
+
+  LD.addOverlaping = function(node) {
+
+    if(node !== undefined){
+      if(LD.overlapingNM.indexOf(node) <= -1 && Game.solidTiles.indexOf(node.type) > -1){
+        LD.overlapingNM.push(node);
+      }
+    }
+
+  };
 
   document.addEventListener('keydown', function(e) {
     e.preventDefault();
@@ -34,14 +46,13 @@
       }
     }
 
-
-
   });
 
   Game.indexCurrentMap = 0;
 
   Game.switchMap = function() {
     var current;
+    LD.overlapingNM.length = 0;
 
     if(Game.end){
 
@@ -51,29 +62,24 @@
       return false;
     }
 
-    if(
-      Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.y + (LD.player.size / 2)) / Game.tileSize) + Math.floor((LD.player.x + (LD.player.size / 2)) / Game.tileSize)].type) > -1 ||
-      Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor(LD.player.y / Game.tileSize) + Math.floor(LD.player.x / Game.tileSize)].type) > -1 ||
-      Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.y) / Game.tileSize) + Math.floor((LD.player.x + LD.player.size) / Game.tileSize)].type) > -1
-      ){
+    //top-left
+    LD.addOverlaping(Game.nextMap.grid[Game.nextMap.cols * Math.floor(LD.player.y / Game.tileSize) + Math.floor(LD.player.x / Game.tileSize)]);
+    //top-right
+    LD.addOverlaping(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.y) / Game.tileSize) + Math.floor((LD.player.x + LD.player.size) / Game.tileSize)]);
+    //bottom-left
+    LD.addOverlaping(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor(LD.player.next.x / Game.tileSize)]);
+    //bottom-right
+    LD.addOverlaping(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor((LD.player.next.x + LD.player.size) / Game.tileSize)]);
 
+    for (i = 0; i < LD.overlapingNM.length; i++) {
+
+      if(Game.Collision.intercects(LD.overlapingNM[i], LD.player)){
         Game.blocked.play();
-      Game.mapAlpha = 0.6;
-
+        Game.mapAlpha = 0.6;
         return false;
-    } else {
-      if(LD.player.vy > 2){
-              if(
-        Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor(LD.player.next.x / Game.tileSize)].type) > -1 ||
-        Game.solidTiles.indexOf(Game.nextMap.grid[Game.nextMap.cols * Math.floor((LD.player.next.y + LD.player.size) / Game.tileSize) + Math.floor((LD.player.next.x + LD.player.size) / Game.tileSize)].type) > -1 ){
-
-          Game.blocked.play();
-      Game.mapAlpha = 0.6;
-
-          return false;
-        }
       }
-    }
+
+    };
 
     current = Game.currentMap;
     Game.currentMap = Game.nextMap;
@@ -187,6 +193,11 @@
 
     Game.currentMap.draw();
     LD.player.draw();
+
+    //debug for collision with the next map
+    // for (var i = 0; i < LD.overlapingNM.length; i++) {
+    //   Game.ctx.fillRect(LD.overlapingNM[i].x, LD.overlapingNM[i].y, 32,32);
+    // };
 
     if(Game.end){
       Game.ctx.textAlign = 'center';
