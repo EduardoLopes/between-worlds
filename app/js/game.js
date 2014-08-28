@@ -179,9 +179,9 @@
 
     if(Game.preload.music1 && Game.preload.music2){
       LD.currentState = 'play';
-      // Game.music1.play();
-      // Game.music2.play();
-      // Game.music2.mute();
+      Game.music1.play();
+      Game.music2.play();
+      Game.music2.mute();
     }
 
   };

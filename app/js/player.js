@@ -82,13 +82,11 @@
       if(Game.Key.left && this.y + this.size >= 0){
         this.vx += -this.speed;
         this.currentAnimation = 'walkingLeft';
-        if(this.y > Game.height || this.y < 0) this.next.x = this.x + 2;
       }
 
       if(Game.Key.right && this.y + this.size >= 0){
         this.vx += this.speed;
         this.currentAnimation = 'walkingRight';
-        if(this.y > Game.height || this.y < 0) this.next.x = this.x - 2;
       }
     }
 
@@ -215,9 +213,9 @@
 
     if(this.tick % 5 == 0){
 
-      if(this.tick % 2 == 0 && !this.jumping && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
+      if(this.tick % 2 == 0 && ( this.vy < 1 ) && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
         Game.walk1.play();
-      } else if(!this.jumping &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
+      } else if(( this.vy < 1 ) &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
         Game.walk2.play();
       }
 
