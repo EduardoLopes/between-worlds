@@ -210,18 +210,18 @@
       Game.tileSize,
       Game.tileSize
     );
+    if(Game.mapAlpha < 0.6){
+      if(this.tick % 5 == 0){
 
-    if(this.tick % 5 == 0){
+        if(this.tick % 2 == 0 && ( this.vy < 1 ) && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
+          Game.walk1.play();
+        } else if(( this.vy < 1 ) &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
+          Game.walk2.play();
+        }
 
-      if(this.tick % 2 == 0 && ( this.vy < 1 ) && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
-        Game.walk1.play();
-      } else if(( this.vy < 1 ) &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
-        Game.walk2.play();
+        this.frame++;
       }
-
-      this.frame++;
     }
-
     this.tick++;
 
   };
