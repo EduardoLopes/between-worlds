@@ -59,7 +59,7 @@
 
 
 
-    if(Game.mapAlpha < 0.8){
+    if(Game.mapAlpha < 0.6){
       if(!Game.Key.keydown){
 
         if(this.currentAnimation == 'walkingLeft'){
@@ -72,7 +72,7 @@
 
       }
        if(this.vy < this.maxSpeed){
-        this.vy += 1;
+        this.vy += 0.8;
       }
 
       this.vx *= 0.62;
