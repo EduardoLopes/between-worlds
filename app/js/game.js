@@ -17,7 +17,7 @@
   LD.addOverlaping = function(node) {
 
     if(node !== undefined){
-      if(LD.overlapingNM.indexOf(node) <= -1 && Game.solidTiles.indexOf(node.type) > -1){
+      if(LD.overlapingNM.indexOf(node) <= -1 && node.solid){
         LD.overlapingNM.push(node);
       }
     }

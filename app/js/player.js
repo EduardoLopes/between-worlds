@@ -102,7 +102,7 @@
 
     for (var i = 0; i < this.overlaping.length; i++) {
 
-      if(Game.solidTiles.indexOf(this.overlaping[i].type) > -1){
+      if(this.overlaping[i].solid){
 
 
         if(Game.Collision.intercects(this.overlaping[i], this)){

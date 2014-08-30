@@ -15,6 +15,7 @@
     this.i = i;
     this.adjacents = [];
     this.edges = [];
+    this.solid = Game.solidTiles.indexOf(t) > -1;
 
   };
 
@@ -64,22 +65,22 @@
         this.addAdjacents(this.grid[this.cols * h + w], this.grid[this.cols * (h) + (w + 1)]);
         this.addAdjacents(this.grid[this.cols * h + w], this.grid[this.cols * (h) + (w - 1)]);
 
-        if(Game.solidTiles.indexOf(this.grid[this.cols * h + w].type) > -1){
+        if(this.grid[this.cols * h + w].solid){
         //if(this.grid[this.cols * h + w].type !== 0){
 
-          if(this.grid[this.cols * (h + 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h+1) + w].type) === -1){
+          if(this.grid[this.cols * (h + 1) + w] !== undefined && this.grid[this.cols * (h+1) + w].solid === false){
             this.grid[this.cols * h + w].edges.push('b');
           }
 
-          if(this.grid[this.cols * (h - 1) + w] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * (h-1) + w].type) === -1){
+          if(this.grid[this.cols * (h - 1) + w] !== undefined && this.grid[this.cols * (h-1) + w].solid === false){
             this.grid[this.cols * h + w].edges.push('t');
           }
 
-          if(this.grid[this.cols * (h) + (w + 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w + 1)].type) === -1){
+          if(this.grid[this.cols * (h) + (w + 1)] !== undefined && this.grid[this.cols * h + (w + 1)].solid === false){
             this.grid[this.cols * h + w].edges.push('r');
           }
 
-          if(this.grid[this.cols * (h) + (w - 1)] !== undefined && Game.solidTiles.indexOf(this.grid[this.cols * h + (w - 1)].type) === -1){
+          if(this.grid[this.cols * (h) + (w - 1)] !== undefined && this.grid[this.cols * h + (w - 1)].solid === false){
             this.grid[this.cols * h + w].edges.push('l');
           }
         }
