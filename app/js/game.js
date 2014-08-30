@@ -40,7 +40,6 @@
 
       if(LD.muteMusic){
         Game.music1.mute();
-        Game.music2.mute();
       } else {
         Game.music1.unmute();
       }
@@ -92,17 +91,6 @@
     Game.canvas.style.borderColor = Game.currentMap.border;
     Game.canvas.style.background = Game.currentMap.background;
     Game.changeMap.play();
-    if(!LD.muteMusic){
-      if(LD.music){
-        Game.music1.unmute();
-        Game.music2.mute();
-      } else {
-        Game.music2.unmute();
-        Game.music1.mute();
-      }
-    }
-
-    LD.music = !LD.music;
   };
 
   Game.setNextMap = function() {
@@ -177,11 +165,9 @@
     Game.ctx.font = "normal 20px Arial";
     Game.ctx.fillText('Loading...', Game.width - 120, Game.height - 20);
 
-    if(Game.preload.music1 && Game.preload.music2){
+    if(Game.preload.music1){
       LD.currentState = 'play';
       Game.music1.play();
-      Game.music2.play();
-      Game.music2.mute();
     }
 
   };

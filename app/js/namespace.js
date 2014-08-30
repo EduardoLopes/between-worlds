@@ -64,20 +64,11 @@ Game.nextMapSound = new Howl({
 
 
 Game.music1 = new Howl({
-  urls: ['music/worlds.wav', 'music/worlds.ogg','music/worlds.mp3'],
+  urls: ['music/worlds3.ogg', 'music/worlds3.mp3'],
   loop: true,
-  volume: 0.4,
+  volume: 0.6,
   onload: function() {
     Game.preload.music1 = true;
-  }
-});
-
-Game.music2 = new Howl({
-  urls: ['music/worlds2.wav', 'music/worlds2.ogg','music/worlds2.mp3'],
-  loop: true,
-  volume: 0.4,
-  onload: function() {
-    Game.preload.music2 = true;
   }
 });
 
