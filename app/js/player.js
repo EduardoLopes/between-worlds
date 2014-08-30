@@ -14,12 +14,12 @@
       x: this.x,
       y: this.y
     };
-    this.speed = 2;
+    this.speed = 100;
     this.maxSpeed = 15;
     this.vx = 0;
     this.vy = 0;
     this.size = 16;
-    this.jump = -9;
+    this.jump = -5;
     this.overlaping = [];
     this.jumping = true;
     this.sprite = [];
@@ -45,20 +45,6 @@
   Player.prototype.update = function() {
     this.overlaping.length = 0;
 
-        // if(this.x + this.size < 0){
-    //   this.x = Game.width;
-    //   this.next.x = this.x;
-    //   Game.fall.play();
-    // };
-
-    // if(this.x > Game.width){
-    //   this.x = -this.size;
-    //   this.next.x = this.x;
-    //   Game.fall.play();
-    // };
-
-
-
     if(Game.mapAlpha < 0.6){
       if(!Game.Key.keydown){
 
@@ -71,21 +57,27 @@
         }
 
       }
-       if(this.vy < this.maxSpeed){
-        this.vy += 0.8;
+
+      if(this.vy < -2 && Game.Key.up){
+        this.vy += -0.27;
       }
 
-      this.vx *= 0.62;
+      if(this.vy < this.maxSpeed){
+        this.vy += 0.5;
+      }
+
+
+      this.vx *= 0.56;
 
       this.next.x += this.vx;
       this.next.y += this.vy;
       if(Game.Key.left && this.y + this.size >= 0){
-        this.vx += -this.speed;
+        this.vx += -this.speed * Game.delta;
         this.currentAnimation = 'walkingLeft';
       }
 
       if(Game.Key.right && this.y + this.size >= 0){
-        this.vx += this.speed;
+        this.vx += this.speed * Game.delta;
         this.currentAnimation = 'walkingRight';
       }
     }

@@ -194,7 +194,8 @@
       Game.ctx.font = "normal 12px Arial";
       Game.ctx.fillText('Did something happen? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
     }
-
+    Game.ctx.fillStyle = '#181818';
+    //Game.ctx.fillText((Game.now - Game.last), 10,10 );
     Game.mapAlpha += (0.14 - Game.mapAlpha) * 0.09;
     if(typeof Game.nextMap !== 'undefined'){
       Game.ctx.globalAlpha = Game.mapAlpha;
@@ -206,14 +207,21 @@
     Game.ctx.fillStyle = 'rgba(205,205,205, 1)';
     Game.ctx.fillRect(0, 0, Game.width, Game.height);
 
+
   };
 
   LD.loop = function() {
 
+    Game.now = performance.now();
+    Game.delta = (Game.now - Game.last) / 1000;
+
     //clear the canvas
     Game.canvas.width = Game.width;
     LD.state[LD.currentState]();
+
     requestAnimationFrame(LD.loop);
+
+    Game.last = Game.now;
 
   };
 

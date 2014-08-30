@@ -10,8 +10,13 @@ var Game = {
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite'),
   spritePlayer: document.getElementById('player'),
-  end: false
+  end: false,
+  now: 0,
+  last: 0,
+  delta: 0
 };
+
+
 
 Game.ctx.webkitImageSmoothingEnabled = false;
 Game.ctx.mozImageSmoothingEnabled = false;
