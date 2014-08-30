@@ -36,6 +36,18 @@
     i = 0;
     this.generate();
     this.index = index;
+    this.loaded = false;
+
+    Game.mapCache.canvas.width = Game.width;
+
+    this.drawMap();
+
+    this.png = new Image();
+    this.png.onload = function() {
+      this.loaded = true;
+    }.bind(this);
+    this.png.src = Game.mapCache.canvas.toDataURL('image/png');
+
 
   };
 
@@ -104,7 +116,7 @@
     spriteCoords.y = Math.floor(type / 10);
     spriteCoords.x = (type - spriteCoords.y * 10);
 
-    Game.ctx.drawImage(
+    Game.mapCache.ctx.drawImage(
       Game.sprite,
       spriteCoords.x * Game.tileSize,
       spriteCoords.y * Game.tileSize,
@@ -118,7 +130,7 @@
 
   };
 
-  Map.prototype.draw = function() {
+  Map.prototype.drawMap = function() {
 
 
     for ( h = 0; h < this.rows; h++) {
@@ -128,6 +140,12 @@
 
       };
     };
+
+  };
+
+  Map.prototype.draw = function() {
+
+    Game.ctx.drawImage(this.png, 0, 0);
 
   };
 

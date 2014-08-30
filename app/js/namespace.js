@@ -10,13 +10,15 @@ var Game = {
   ctx: this.canvas.getContext('2d'),
   sprite: document.getElementById('sprite'),
   spritePlayer: document.getElementById('player'),
+  mapCache: {},
   end: false,
   now: 0,
   last: 0,
   delta: 0
 };
 
-
+Game.mapCache.canvas = document.createElement('canvas');
+Game.mapCache.ctx = Game.mapCache.canvas.getContext('2d');
 
 Game.ctx.webkitImageSmoothingEnabled = false;
 Game.ctx.mozImageSmoothingEnabled = false;
