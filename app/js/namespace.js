@@ -25,8 +25,7 @@ Game.ctx.mozImageSmoothingEnabled = false;
 Game.ctx.imageSmoothingEnabled = false;
 
 Game.preload = {
-  music1: false,
-  music2: false
+  music1: false
 }
 
 var jump = jsfxr([0,,0.1812,,0.1349,0.4524,,0.2365,,,,,,0.0819,,,,,1,,,,,0.5]);
@@ -34,8 +33,8 @@ var changeMap = jsfxr([1,0.4084,0.8252,0.1305,0.773,0.3455,,0.097,-0.0016,0.3674
 var fall = jsfxr([2,0.8717,0.04,,0.03,0.64,,0.08,0.12,0.04,,-0.4,,,-0.7376,0.1885,-0.1999,-0.0999,0.82,-0.42,0.47,0.16,-0.18,0.74]);
 var blocked = jsfxr([3,,0.0367,,0.2562,0.2087,,-0.4239,,,,,,,,,,,1,,,,,0.5]);
 var win = jsfxr([1,,0.2601,,0.4024,0.4219,,0.4438,,,,,,,,0.4664,,,1,,,,,0.5]);
-var walk1 = jsfxr([1,,0.0611,,0.1188,0.302,,-0.4,-0.3199,,,-0.62,,,,,,,0.87,,0.29,0.36,-0.24,0.20]);
-var walk2 = jsfxr([1,,0.0611,,0.1188,0.302,,-0.3399,0.28,,,-0.62,,,,,,,0.87,,0.29,0.25,-0.24,0.20]);
+var walk1 = jsfxr([1,,0.0611,,0.1188,0.302,,-0.4,-0.3199,,,-0.62,,,,,,,0.87,,0.29,0.36,-0.24,0.25]);
+var walk2 = jsfxr([1,,0.0611,,0.1188,0.302,,-0.3399,0.28,,,-0.62,,,,,,,0.87,,0.29,0.25,-0.24,0.25]);
 var nextMap = jsfxr([1,,0.01,,0.3046,0.3155,,0.4569,,,,,,,,0.5513,,,1,,,,,0.52]);
 Game.jump = new Howl({
   urls: [jump]
@@ -73,7 +72,7 @@ Game.nextMapSound = new Howl({
 Game.music1 = new Howl({
   urls: ['music/worlds3.ogg', 'music/worlds3.mp3'],
   loop: true,
-  volume: 0.6,
+  volume: 0.9,
   onload: function() {
     Game.preload.music1 = true;
   }

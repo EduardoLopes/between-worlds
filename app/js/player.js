@@ -15,7 +15,7 @@
       y: this.y
     };
     this.speed = 100;
-    this.maxSpeed = 15;
+    this.maxSpeed = 10;
     this.vx = 0;
     this.vy = 0;
     this.size = 16;

@@ -115,8 +115,6 @@
     Game.mapCache.canvas.width = Game.width;
     Game.mapCache.canvas.height = Game.height;
 
-    Game.mapCache.ctx.fillStyle = '#fff';
-    Game.mapCache.ctx.fillRect(0,0,25,25);
 
     LD.currentState = 'preload';
     LD.maps = [];
@@ -200,7 +198,7 @@
       Game.ctx.fillText('Did something happen? i don\'t know, we can\'t see from here!', (Game.width / 2) +100, ((Game.height / 2) + 40) - 100);
     }
     Game.ctx.fillStyle = '#181818';
-    Game.ctx.fillText((Game.now - Game.last), 10,10 );
+    //Game.ctx.fillText((Game.now - Game.last), 10,10 );
     Game.mapAlpha += (0.14 - Game.mapAlpha) * 0.09;
     if(typeof Game.nextMap !== 'undefined'){
       Game.ctx.globalAlpha = Game.mapAlpha;
