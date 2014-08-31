@@ -215,8 +215,8 @@
 
   LD.loop = function() {
 
-    Game.now = performance.now();
-    Game.delta = (Game.now - Game.last) / 1000;
+    //Game.now = performance.now();
+    //Game.delta = (Game.now - Game.last) / 1000;
 
     //clear the canvas
     Game.canvas.width = Game.width;
@@ -224,7 +224,7 @@
 
     requestAnimationFrame(LD.loop);
 
-    Game.last = Game.now;
+    //Game.last = Game.now;
 
   };
 

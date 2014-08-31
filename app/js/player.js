@@ -14,7 +14,7 @@
       x: this.x,
       y: this.y
     };
-    this.speed = 100;
+    this.speed = 2;
     this.maxSpeed = 10;
     this.vx = 0;
     this.vy = 0;
@@ -72,12 +72,12 @@
       this.next.x += this.vx;
       this.next.y += this.vy;
       if(Game.Key.left && this.y + this.size >= 0){
-        this.vx += -this.speed * Game.delta;
+        this.vx += -this.speed;
         this.currentAnimation = 'walkingLeft';
       }
 
       if(Game.Key.right && this.y + this.size >= 0){
-        this.vx += this.speed * Game.delta;
+        this.vx += this.speed;
         this.currentAnimation = 'walkingRight';
       }
     }
@@ -86,6 +86,10 @@
       this.next.y = -16;
       Game.fall.play();
     };
+
+    if(this.vy > 1){
+      this.jumping = true;
+    }
 
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y + this.size) / Game.tileSize) + Math.floor((this.next.x + this.size) / Game.tileSize)]);
     this.addOverlaping(Game.currentMap.grid[Game.currentMap.cols * Math.floor((this.next.y) / Game.tileSize) + Math.floor((this.next.x) / Game.tileSize)]);
@@ -205,9 +209,9 @@
     if(Game.mapAlpha < 0.6){
       if(this.tick % 5 == 0){
 
-        if(this.tick % 2 == 0 && ( this.vy < 1 ) && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
+        if(this.frame % 2 == 0 && ( !this.jumping ) && (this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')){
           Game.walk1.play();
-        } else if(( this.vy < 1 ) &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
+        } else if(( !this.jumping ) &&(this.currentAnimation === 'walkingLeft' || this.currentAnimation === 'walkingRight')) {
           Game.walk2.play();
         }
 
